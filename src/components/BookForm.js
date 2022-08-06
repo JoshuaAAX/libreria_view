@@ -1,24 +1,28 @@
 import {Grid, Card, Typography, CardContent, TextField, Button} from '@mui/material'
-import {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react';
+
+import MenuItem from '@mui/material/MenuItem';
+
 
 export default function BookForm() {
         
 		const [book, setBook] = useState({           
 		      title: '',
 		      score: 0,
+			  category: '',
 		      author: '',
-			  editorial:'',			
+			  editorial: '',			
 		});
 		
 		const handleChange = e => {
-			//	console.log(e.target.name, e.target.value);
-				setBook({...book,[e.target.name]: e.target.value});
-		}
+			 console.log(book)
+			  setBook({...book,[e.target.name]: e.target.value});
+		};
         
 		const handleSubmit = async (e) => {
              e.preventDefault();
             
-
+       
 		     function replacer(key,value){
                   if(key === "score"){
 				      return parseInt(value,10)
@@ -49,10 +53,10 @@ export default function BookForm() {
 		   justifyContent='center'>
 
 			 <Grid item xs={3}>
-			    <Card sx={{mt: 5}}  style={{ backgroundColor: '#Bec07c', padding: "1rem"}}>
+			    <Card sx={{mt: 5}}  style={{ backgroundColor: '#FFFFFF', padding: "1rem"}}>
 			       
 			       <Typography variant ="14"  textAlign="center" color="black"> 
-		                 Create Book                  
+		                 Create Book                
 			       </Typography>
 
 			       <CardContent>
@@ -60,27 +64,33 @@ export default function BookForm() {
 
 			               <TextField
 			                variant='filled' 
-			                label='name'
+			                label='title'
 			                sx={{display: 'block',
 							     margin: '.5rem 0'
 							   }}
 				            name = "title"
 				            onChange={handleChange}
 			               />
-
-
-			               <TextField
+                        
+						  <TextField
+						    fullWidth
+						    select
 			                variant='filled'
-			                label='score'
+			                label="category"
 			                sx={{display: 'block',
-						         margin: '.5rem 0'
-                      
-							   }}
-				            name ="score"
+								 margin: '.5rem 0'		
+						       }}
+				            name = "category"
 				            onChange={handleChange}
-			               />
+			               >
+                            <MenuItem value={'a'}>Ten</MenuItem>
+                           <MenuItem value={'s'}>Twenty</MenuItem>
+                           <MenuItem value={'d'}>Thirty</MenuItem>
+                           </TextField>
 
 			               <TextField
+						    fullWidth
+						    select
 			                variant='filled'
 			                label="author"
 			                sx={{display: 'block',
@@ -88,10 +98,11 @@ export default function BookForm() {
 						       }}
 				            name = "author"
 				            onChange={handleChange}
-				            
 			               />
 			  
 			               <TextField
+						    fullWidth
+						    select
 			                variant='filled'
 			                label="editorial"
 			                sx={{display: 'block',

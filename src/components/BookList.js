@@ -25,7 +25,7 @@ export default function BookList() {
         <>
 			 <h2>Book List</h2>
 			 {books.map(book =>(
-                  <Card style= {{marginBottom: ".7rem", backgroundColor: '#bec07c'}} 
+                  <Card style = {{marginBottom: ".7rem", backgroundColor: '#fffff'}} 
 					    key = {book.id}>
 				     <CardContent>
 						<Typography>{book.title}</Typography>
