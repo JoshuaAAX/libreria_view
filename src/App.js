@@ -11,11 +11,11 @@ export default function App() {
              <Navbar/>
 			 <Container>
 			    <Routes>
-			      <Route path='/' element={<BookList />}/>
-			      <Route path='/book/new' element={<BookForm />} />
+			      <Route path='/books' element={<BookList />}/>
+			      <Route path='/books/new' element={<BookForm />} />
+				  <Route path='/books/:isbn/edit' element={<BookForm/>}/>
 			    </Routes>
 			 </Container>
-
 		  </BrowserRouter>
 
 	 )
